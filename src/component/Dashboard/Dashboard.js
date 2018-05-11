@@ -29,7 +29,7 @@ export default class Dashboard extends Component {
         console.log(this.state.properties)
         return (
             <div>Dashboard
-                <Link to='/wizard'><button>Add Property</button></Link>
+                <Link to='/wizard/step1'><button>Add Property</button></Link>
                 {this.state.properties.map((prop, i) => {
                     return (
                         <div key={i}>
