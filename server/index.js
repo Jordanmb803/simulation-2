@@ -15,6 +15,7 @@ massive(process.env.CONNECTION_STRING).then(dbInstance => {
 
 // ENDPOINTS
 app.get('/api/properties', controller.getAllProps)
-
+app.post('/api/property', controller.createProperty)
+app.delete('/api/property/:id', controller.deleteProperty)
 
 app.listen(port, console.log(`Port ${port} is on and crackin`))

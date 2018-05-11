@@ -9,14 +9,22 @@ export default class Dashboard extends Component {
         this.state = {
             properties: []
         }
+        this.deleteProperty = this.deleteProperty.bind(this)
     }
 
     componentDidMount() {
         axios.get('/api/properties').then(res => {
             this.setState({ properties: res.data })
+            console.log('refreshed')
         })
     }
 
+    deleteProperty(id){
+        axios.delete(`/api/property/${id}`).then(res => {
+            console.log(`${id}deleted`)
+            this.componentDidMount()
+        })
+    }
     render() {
         console.log(this.state.properties)
         return (
@@ -25,14 +33,16 @@ export default class Dashboard extends Component {
                 {this.state.properties.map((prop, i) => {
                     return (
                         <div key={i}>
+                            {console.log(prop)}
                             <House
+                                id={prop.id}
                                 propertyName={prop.propertyname}
                                 address={prop.address}
                                 city={prop.city}
                                 state={prop.state}
                                 zipcode={prop.zipcode}
                             />
-                            <button>delete</button>
+                            <button onClick={()=> this.deleteProperty(prop.id)}>delete</button>
                         </div>
                     )
                 })

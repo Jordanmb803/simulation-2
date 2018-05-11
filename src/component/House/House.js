@@ -3,6 +3,8 @@ import React from 'react';
 export default function House(props){
     return(
         <div>House
+        
+        <p>{props.id}</p>
         <p>{props.propertyName}</p>
         <p>{props.address}</p>
         <p>{props.city}</p>
