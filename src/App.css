@@ -1,28 +1,150 @@
 .App {
+  background: #AFD4C0;
+  width: 100%;
+  height: 100vh;
+  margin: 0;
+  position: relative;
+}
+
+.header {
+  background: #519872;
+  height: 75px;
+  width: 100%;
   text-align: center;
+  margin: 0;
+  position: fixed;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
-}
-
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
+h1 {
+  height: 74px;
+  margin: 0px;
   color: white;
 }
 
-.App-title {
-  font-size: 1.5em;
+.mainBody {
+  top: 77px;
+  width: 50%;
+  height: 90vh;
+  margin: auto;
+  position: relative;
+  background: #E5F4EC;
+  padding: 10px;
 }
 
-.App-intro {
-  font-size: large;
+h2 {
+  color: #3B5249;
+  margin: 15px;
+  width: 45%;
+  height: 43px;
+  font-size: 38px;
 }
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+.addProperty {
+  width: 42%;
+  height: 43px;
+  margin: 15px 0px 15px 15px;
+  position: relative;
+}
+
+.dash_subHeader{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
+  height: 83px;
+  padding: 0;
+  position: relative; 
+  border-bottom: black solid;
+}
+
+.addPropButton{
+  width: 100%;
+  height: 43px;
+  background: #8AEA92;
+  color: black;
+  font-size: 20px;
+}
+
+.wizard_subHeader {
+  display: flex;
+  justify-content: space-between;
+  box-sizing: border-box;
+  height: 83px;
+  position: relative;
+}
+
+.wizHeader {
+  color: black;
+  font-size: 27px;
+}
+
+.wizButton {
+  width: 42%;
+  position: relative; 
+}
+
+.cancelButton {
+  background: #fec2c2;
+  width: 30%;
+  height: 32px;
+  float: right;
+  margin: 18px;
+}
+
+.stepOneDiv {
+  margin: 30px;
+  height: 75%;
+  display: flex;
+  flex-direction: column;
+}
+
+input { 
+  border: #519872 solid;
+}
+
+.addressInput {
+  width: 85%;
+}
+
+.nextButton {
+  bottom: 10px;
+  right: 10px;
+  width: 40%;
+}
+
+.cityStateBox {
+  display: flex;
+  flex-direction: row;
+}
+
+.cityInput {
+  padding: 10px 10px 10px 0px;
+}
+
+.stateInput {
+  padding: 10px;
+}
+
+.zipInput {
+  width: 20%;
+
+}
+
+h3{
+  margin: 5px;
+}
+
+.houseBox{
+  display: flex;
+  flex-direction: row;
+  background: #dedede;
+}
+
+.houseC2 {
+  display: flex;
+  flex-direction: column;
+}
+
+p {
+  margin: 8px;
 }

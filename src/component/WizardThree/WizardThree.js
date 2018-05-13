@@ -3,14 +3,18 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { addMortRent } from '../../ducks/reducer';
 import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
+import { cancelEntry } from '../../ducks/reducer';
 
 class WizardThree extends Component {
    constructor(){
        super()
        this.state = {
            monMortAmount: '',
-           desMonRent: ''
+           desMonRent: '',
+           redirect: false
        }
+       this.createProperty = this.createProperty.bind(this)
    }
    
    componentDidMount(){
@@ -21,20 +25,27 @@ class WizardThree extends Component {
    }
 
     createProperty() {
-        const { propertyName, address, city, state, zipcode, imageUrl } = this.props
+        const { propertyName, address, city, states, zipcode, imageUrl } = this.props
         const {monMortAmount, desMonRent} = this.state
-        axios.post('/api/property', { propertyName, address, city, state, zipcode, imageUrl, monMortAmount, desMonRent }).then(res => {
+        axios.post('/api/property', { propertyName, address, city, states, zipcode, imageUrl, monMortAmount, desMonRent }).then( () => {
+            this.props.cancelEntry()
+            this.setState({
+                redirect: true
+            });
         })
     }
 
     render() {
+        if (this.state.redirect){
+            return <Redirect to = "/"/>
+        }
         console.log(this.props)
         return (
-            <div>W3
+            <div>
                 <input value={this.state.monMortAmount} onChange={e=> this.setState({monMortAmount: e.target.value})}/>
                 <input value={this.state.desMonRent} onChange={e=> this.setState({desMonRent: e.target.value})}/>
-                <Link to='/wizard/step2'><button onClick={()=>this.props.addMortRent(this.state.monMortAmount,this.state.desMonRent)}>Previous</button></Link>
-                <Link to='/'><button onClick={() => this.createProperty()}>Complete</button></Link>
+                <Link to='/wizard/step2'><button className='previousButton' onClick={()=>this.props.addMortRent(this.state.monMortAmount,this.state.desMonRent)}>Previous</button></Link>
+                <button onClick={() => this.createProperty()}>Complete</button>
             </div>
         )
     }
@@ -53,4 +64,4 @@ function mapStateToProps(state) {
     }
 }
 
-export default connect(mapStateToProps, { addMortRent })(WizardThree);
+export default connect(mapStateToProps, { addMortRent, cancelEntry })(WizardThree);

@@ -5,8 +5,8 @@ module.exports = {
         })
     },
     createProperty: (req, res) => {
-        const { propertyName, address, city, state, zipcode, imageUrl, monMortAmount, desMonRent } = req.body
-        req.app.get('db').create_property([propertyName, address, city, state, zipcode, imageUrl, monMortAmount, desMonRent])
+        const { propertyName, address, city, states, zipcode, imageUrl, monMortAmount, desMonRent } = req.body
+        req.app.get('db').create_property([propertyName, address, city, states, zipcode, imageUrl, monMortAmount, desMonRent])
         .then(ok => {
             res.sendStatus(200)
         })

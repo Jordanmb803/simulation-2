@@ -28,19 +28,26 @@ export default class Dashboard extends Component {
     render() {
         console.log(this.state.properties)
         return (
-            <div>Dashboard
-                <Link to='/wizard/step1'><button>Add Property</button></Link>
+            <div className='mainBody'>
+                <div className='dash_subHeader'>
+                <h2>Dashboard</h2>
+                <Link className='addProperty' to='/wizard/step1'><button className='addPropButton'>Add New Property</button></Link>
+                </div>
                 {this.state.properties.map((prop, i) => {
                     return (
                         <div key={i}>
                             {console.log(prop)}
-                            <House
+                            <House 
+                                img={prop.image}
                                 id={prop.id}
                                 propertyName={prop.propertyname}
                                 address={prop.address}
                                 city={prop.city}
                                 state={prop.state}
                                 zipcode={prop.zipcode}
+                                mma={prop.monthly_mortage_amount}
+                                desRent={prop.desired_rent}
+                               
                             />
                             <button onClick={()=> this.deleteProperty(prop.id)}>delete</button>
                         </div>

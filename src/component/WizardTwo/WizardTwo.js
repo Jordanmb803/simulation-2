@@ -20,11 +20,11 @@ class WizardTwo extends Component {
     render() {
         console.log(this.props.imgUrl)
         return (
-            <div>W2
+            <div>
                 <h3>Image URL</h3>
                 <input value={this.state.imageUrl} onChange={e => this.setState({ imageUrl: e.target.value })} />
-                <Link to='/wizard/step1'><button onClick={()=> this.props.addImgUrl(this.state.imageUrl)}>Previous</button></Link>
-                <Link to='/wizard/step3'><button onClick={()=> this.props.addImgUrl(this.state.imageUrl)}>Next</button></Link>
+                <Link to='/wizard/step1'><button className='previousButton' onClick={()=> this.props.addImgUrl(this.state.imageUrl)}>Previous</button></Link>
+                <Link className='nextButton' to='/wizard/step3'><button className='nextButton' onClick={()=> this.props.addImgUrl(this.state.imageUrl)}>Next</button></Link>
             </div>
         )
     }
